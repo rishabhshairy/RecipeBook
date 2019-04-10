@@ -1,0 +1,45 @@
+<div class="row">
+  <div class="col-xs-12">
+
+    <form [formGroup]="shoppingEditForm" (ngSubmit)="onAddIngerdient()">
+      <div class="row">
+        <div class="col-sm-5 form-group">
+
+          <label for="name" class="col-sm-2">
+            Name
+          </label>
+          <input type="text" class="form-control" name="name" formControlName="name" >
+          <span *ngIf="!f.name.valid && f.name.touched">Please Enter Name of Ingredient</span>
+
+        </div>
+        <div class="col-sm-2 form-group">
+
+          <label for="amount" class="col-sm-2">
+            Amount
+          </label>
+          <input type="number"  class="form-control" name="amount" formControlName="amount">
+          <span *ngIf="!f.amount.valid && f.amount.touched">Please Enter Amount of Ingredient</span>
+
+
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+
+          <button type="submit" class="btn btn-success" style="margin-left: 30px"
+                  *ngIf="addMode" 
+                  [disabled]="shoppingEditForm.invalid">Add</button>
+          <button type="button" class="btn btn-warning" style="margin-left: 30px"
+                  *ngIf="editMode"
+                  (click)="onUpdate()" 
+                  [disabled]="shoppingEditForm.invalid">Update</button>
+          <button type="button" class="btn btn-danger" style="margin-left: 30px" *ngIf="editMode" (click)="onDelete()">Delete</button>
+          <button type="button" class="btn btn-primary" style="margin-left: 30px" (click)="onClear()">Clear</button>
+
+
+        </div>
+      </div>
+    </form>
+
+  </div>
+</div>

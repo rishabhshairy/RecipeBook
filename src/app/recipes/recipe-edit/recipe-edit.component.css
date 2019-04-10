@@ -1,0 +1,12 @@
+label{
+   color: blueviolet;     
+}
+.mar-top-20{
+    margin-top: 20px;
+}
+input.ng-invalid.ng-touched{
+    border: solid 1px red;
+}
+textarea.ng-invalid.ng-touched{
+    border: solid 1px red;
+}
