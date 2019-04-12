@@ -24,14 +24,17 @@ export class RecipeService {
   ];
   constructor(private shopService: ShoppingListService) { }
 
-
+  setRecipe(recipe: Recipe[]) {
+    this.recipes = recipe;
+    this.recipeChanged.next(this.recipes.slice());
+  }
   getRecipe() {
     return this.recipes.slice();
   }
   getRecipeById(id: number) {
     return this.recipes[id];
   }
-  addIngredientToShopList(data: Ingredient[]){
+  addIngredientToShopList(data: Ingredient[]) {
     this.shopService.addIngredients(data);
   }
 
@@ -43,7 +46,7 @@ export class RecipeService {
     this.recipes[index] = newRecipe;
     this.recipeChanged.next(this.recipes.slice());
     console.log(newRecipe);
-    
+
   }
   deleteRecipe(index: number) {
     this.recipes.splice(index, 1);

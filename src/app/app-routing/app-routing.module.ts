@@ -1,3 +1,6 @@
+import { AuthGaurd } from './../auth/auth-gaurd.service';
+import { SigninComponent } from './../auth/signin/signin.component';
+import { SignupComponent } from './../auth/signup/signup.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
@@ -11,12 +14,14 @@ const routes: Routes = [
   {path: '', redirectTo: '/recipes', pathMatch: 'full'},
   {path: 'recipes', component: RecipesComponent, children: [
     {path: '', component: RecipeStartComponent},
-    {path: 'new', component: RecipeEditComponent},
+    {path: 'new', component: RecipeEditComponent, canActivate: [AuthGaurd]},
     {path: ':id', component: RecipeDetailComponent},
-    {path: ':id/edit', component: RecipeEditComponent}
+    {path: ':id/edit', component: RecipeEditComponent, canActivate: [AuthGaurd]}
     
   ]},
-  {path: 'shoppingList', component: ShoppingListComponent}
+  {path: 'shoppingList', component: ShoppingListComponent},
+  {path: 'signup', component: SignupComponent},
+  {path: 'signin', component: SigninComponent}
 ];
 @NgModule({
   declarations: [],
